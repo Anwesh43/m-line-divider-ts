@@ -204,3 +204,25 @@ class MLineDivider {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    mld : MLineDivider = new MLineDivider()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.mld.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.mld.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.mld.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
