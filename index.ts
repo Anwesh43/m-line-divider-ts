@@ -44,6 +44,7 @@ class DrawingUtil {
         const sf1 : number = ScaleUtil.divideScale(sf, 0, parts)
         const sf2 : number = ScaleUtil.divideScale(sf, 1, parts)
         const sf3 : number = ScaleUtil.divideScale(sf, 2, parts)
+        console.log(sf, sf1, sf2, sf3)
         context.save()
         context.translate(w / 2, h)
         DrawingUtil.drawLine(context, 9, 9, 0, -size * sf1)
@@ -61,7 +62,7 @@ class DrawingUtil {
         context.lineCap = 'round'
         context.lineWidth = Math.min(w, h) / strokeFactor 
         context.strokeStyle = colors[i]
-        DrawingUtil.drawMLineDivider(context, i)
+        DrawingUtil.drawMLineDivider(context, scale)
     }
 }
 
